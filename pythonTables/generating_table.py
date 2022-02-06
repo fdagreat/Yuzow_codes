@@ -146,54 +146,55 @@ def fdtablegd(data,csize,printable):
     cumulative_frequencies = createCumulativeFrequencies(frequencies)
     print("Here are all the Cumulative Frequencies :", cumulative_frequencies)
 
-    fullData = []
+    if printable == True:
+        printing_data = []
 
-    for i in range(number_of_classes):
-        cell = []
-        # for i in range(number_of_classes):
-            # cell.append(([class_intervals[i]],[class_boundaries[i]],[class_marks[i]],[frequencies[i]],[cumulative_frequencies[i]]))
-            # cell.append(([class_intervals[i]],[class_boundaries[i]],[class_marks[i]],[frequencies[i]],[cumulative_frequencies[i]]))
-        cell.append(str(class_intervals[i]))
-        cell.append('          ')
-        cell.append(str(class_boundaries[i]))
-        cell.append('          ')
-        cell.append(str(class_marks[i]))
-        cell.append('          ')
-        cell.append(str(frequencies[i]))
-        cell.append('          ')
-        cell.append(str(cumulative_frequencies[i]))
-        cell.append('          ')
-    
-        fullData.append(cell)
-    print('fullData :', fullData)
-
-
-    with open("pythonTables/out.txt", "a") as file:
-        headers = ['class_intervals ', 'class_boundaries ', 'class_marks  ','frequencies  ','cumulative_frequencies  ' ]
-        z = 0
-        d = 0
-        file.writelines(headers)
-        file.writelines(' \n')
-        # print(fullData)
-        for i in range(len(fullData)):
-            row = []
-            
-            for f in range(len(fullData[i])):
-                cell = str(fullData[i][f])
-                row.append(cell)
-
-                # row.append('      ')
+        for i in range(number_of_classes):
+            cell = []
+            # for i in range(number_of_classes):
+                # cell.append(([class_intervals[i]],[class_boundaries[i]],[class_marks[i]],[frequencies[i]],[cumulative_frequencies[i]]))
+                # cell.append(([class_intervals[i]],[class_boundaries[i]],[class_marks[i]],[frequencies[i]],[cumulative_frequencies[i]]))
+            cell.append(str(class_intervals[i]))
+            cell.append('          ')
+            cell.append(str(class_boundaries[i]))
+            cell.append('          ')
+            cell.append(str(class_marks[i]))
+            cell.append('          ')
+            cell.append(str(frequencies[i]))
+            cell.append('          ')
+            cell.append(str(cumulative_frequencies[i]))
+            cell.append('          ')
         
-            row.append('\n')
-            file.writelines(row)
-            
+            printing_data.append(cell)
+        print('printing_data :', printing_data)
 
-        file.close()
+
+        with open("pythonTables/out.txt", "a") as file:
+            headers = ['class_intervals ', 'class_boundaries ', 'class_marks  ','frequencies  ','cumulative_frequencies  ' ]
+            z = 0
+            d = 0
+            file.writelines(headers)
+            file.writelines(' \n')
+            # print(printing_data)
+            for i in range(len(printing_data)):
+                row = []
+                
+                for f in range(len(printing_data[i])):
+                    cell = str(printing_data[i][f])
+                    row.append(cell)
+
+                    # row.append('      ')
+            
+                row.append('\n')
+                file.writelines(row)
+                
+
+            file.close()
 
 # Main Variables you can change these
 data = open('pythonTables/98.txt', 'r')
 csize = 10
-printable = False
+printable = True
 
 fdtablegd(data,csize,printable)
 
